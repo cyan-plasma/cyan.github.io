@@ -206,7 +206,7 @@
                 <script>
                     
                     // set the dimensions and margins of the graph
-                    var margin = {top: 20, right: 30, bottom: 30, left: 40},
+                    var margin = {top: 10, right: 30, bottom: 30, left: 40},
                     width = 460 - margin.left - margin.right,
                     height = 400 - margin.top - margin.bottom;
                     
@@ -225,39 +225,40 @@
                                  // Add X axis
                                  var x = d3.scaleLinear()
                                  .domain([5, 20])
-                                 .range([ 0, width ]);
+                                 .range([ margin.left, width - margin.right ]);
                                  svg.append("g")
                                  .attr("transform", "translate(0," + height + ")")
                                  .call(d3.axisBottom(x));
                                  
                                  // Add Y axis
                                  var y = d3.scaleLinear()
-                                 .domain([5, 22])
-                                 .range([ height, 0 ]);
+                                 .domain([5, 25])
+                                 .range([ height - margin.bottom, margin.top ]);
                                  svg.append("g")
                                  .call(d3.axisLeft(y));
                                  
+                                 // Prepare a color palette
+                                 var color = d3.scaleLinear()
+                                 .domain([0, 1]) // Points per square pixel.
+                                 .range(["white", "#69b3a2"])
+                                 
                                  // compute the density data
                                  var densityData = d3.contourDensity()
-                                 .x(function(d) { return x(d.x); })   // x and y = column name in .csv input data
+                                 .x(function(d) { return x(d.x); })
                                  .y(function(d) { return y(d.y); })
                                  .size([width, height])
-                                 .bandwidth(20)    // smaller = more precision in lines = more lines
+                                 .bandwidth(20)
                                  (data)
                                  
-                                 // Add the contour: several "path"
-                                 svg
+                                 // show the shape!
+                                 svg.insert("g", "g")
                                  .selectAll("path")
                                  .data(densityData)
-                                 .enter()
-                                 .append("path")
+                                 .enter().append("path")
                                  .attr("d", d3.geoPath())
-                                 .attr("fill", "none")
-                                 .attr("stroke", "#69b3a2")
-                                 .attr("stroke-linejoin", "round")
+                                 .attr("fill", function(d) { return color(d.value); })
                                  })
                     </script>
-                
             </div>
 		</section>
 
