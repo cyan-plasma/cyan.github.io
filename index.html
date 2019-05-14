@@ -192,34 +192,17 @@
             <div id="chart_div"></div>
             <div>
                 <script src="https://d3js.org/d3-contour.v1.min.js"></script>
-                <script>
-                    chart = {
-                        const path = d3.geoPath();
-                        const contours = d3.contours().size([width, height]);
-                        
-                        const svg = d3.select(wide ? DOM.svg(width, height) : DOM.svg(height, width))
-                        .style("display", "block")
-                        .style("margin", "0 -14px")
-                        .style("width", "calc(100% + 28px)")
-                        .style("height", "auto");
-                        
-                        const g = svg.append("g")
-                        .attr("transform", wide ? null : `
-                              rotate(90 ${width/2},${height/2})
-                              translate(${(width - height) / 2},${(width - height) / 2})
-                              `)
-                              .attr("stroke", "white")
-                              .attr("stroke-width", 0.03);
-                              
-                              for (const threshold of thresholds) {
-                                  g.append("path")
-                                  .attr("d", path(contours.contour(data.values, threshold)))
-                                  .attr("fill", color(threshold));
-                                  
-                                  yield svg.node();
-                              }
-                    }
-                    </script>
+                    <!DOCTYPE html>
+                    <meta charset="utf-8">
+                    
+                    <!-- Load d3.js -->
+                    <script src="https://d3js.org/d3.v4.js"></script>
+                
+                <!-- specific plugin -->
+                <script src="https://d3js.org/d3-contour.v1.min.js"></script>
+                
+                <!-- Create a div where the graph will take place -->
+                <div id="my_dataviz"></div>
             </div>
 		</section>
 
