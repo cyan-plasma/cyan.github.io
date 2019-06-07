@@ -3,7 +3,7 @@
 angleMode = "radians";
 
 var angle = 0;
-var aVelocity = 0.03;
+var aVelocity = 0.0;
 
 var draw = function() {
     background(255);
