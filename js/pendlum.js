@@ -10,6 +10,8 @@ var draw = function() {
     
     var amplitude = 100;
     var x = amplitude * sin(angle);
+    var y = amplitude * cos(angle);
+
     angle += aVelocity;
     
     resetMatrix();
@@ -17,6 +19,6 @@ var draw = function() {
     
     stroke(0, 0, 0);
     fill(175, 175, 175);
-    line(0, 0, x, 0);
-    ellipse(x, 0, 20, 20);
+    line(0, 0, x, y);
+    ellipse(x, y, 20, 20);
 };
