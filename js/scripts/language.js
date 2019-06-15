@@ -54,9 +54,9 @@ $.lang.ko = {
 };
 
 $.lang.en = {
-	0: 'Wonseok Cha - Software Engineer Online Portfolio',
-	1: 'Wonseok Cha',
-	2: 'Software Engineer',
+	0: 'Chan-Yong An - Plasma Physics Online Portfolio',
+	1: 'Chan-Yong An',
+	2: 'Plasma Physicist',
 	3: '<span>About </span>me',
 	4: 'Ski<span>lls</span>',
 	5: 'Exp<span>erience</span>',
